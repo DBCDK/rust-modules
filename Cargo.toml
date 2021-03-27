@@ -1,0 +1,31 @@
+[package]
+name = "dbc-rust-modules"
+version = "0.1.0"
+edition = "2018"
+repository = "https://github.com/dbcdk/rust-modules"
+license = "MIT"
+
+[features]
+default = [
+  "exec",
+  "log"
+]
+exec = []
+log = [
+  "chrono",
+  "erased-serde",
+  "serde",
+  "serde_derive",
+  "serde_json",
+  "uuid"
+]
+
+
+[dependencies]
+chrono = { version = "0.4", optional = true }
+serde = { version = "1", optional = true }
+serde_derive = { version = "1", optional = true }
+serde_json = { version = "1", optional = true }
+erased-serde = { version = "0.3", optional = true }
+uuid = { version = "0.8", features = ["v4"], optional = true }
+
