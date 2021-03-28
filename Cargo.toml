@@ -10,7 +10,11 @@ default = [
   "exec",
   "log"
 ]
-exec = []
+exec = [
+  "serde",
+  "serde_derive",
+  "serde_json",
+]
 log = [
   "chrono",
   "erased-serde",
