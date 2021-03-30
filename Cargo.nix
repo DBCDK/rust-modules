@@ -173,6 +173,11 @@ rec {
             optional = true;
           }
           {
+            name = "once_cell";
+            packageId = "once_cell";
+            optional = true;
+          }
+          {
             name = "serde";
             packageId = "serde";
             optional = true;
@@ -196,9 +201,10 @@ rec {
         ];
         features = {
           "default" = [ "exec" "log" ];
-          "log" = [ "chrono" "erased-serde" "serde" "serde_derive" "serde_json" "uuid" ];
+          "exec" = [ "serde" "serde_derive" "serde_json" ];
+          "log" = [ "chrono" "erased-serde" "once_cell" "serde" "serde_derive" "serde_json" "uuid" ];
         };
-        resolvedDefaultFeatures = [ "chrono" "default" "erased-serde" "exec" "log" "serde" "serde_derive" "serde_json" "uuid" ];
+        resolvedDefaultFeatures = [ "chrono" "default" "erased-serde" "exec" "log" "once_cell" "serde" "serde_derive" "serde_json" "uuid" ];
       };
       "erased-serde" = rec {
         crateName = "erased-serde";
@@ -323,6 +329,21 @@ rec {
         features = {
           "default" = [ "std" ];
         };
+      };
+      "once_cell" = rec {
+        crateName = "once_cell";
+        version = "1.7.2";
+        edition = "2018";
+        sha256 = "18qmpyfigg4ibdhjy5mwcjhzk9adwlgfaqv7nj430ivm86q0i2xg";
+        authors = [
+          "Aleksey Kladov <aleksey.kladov@gmail.com>"
+        ];
+        features = {
+          "alloc" = [ "race" ];
+          "default" = [ "std" ];
+          "std" = [ "alloc" ];
+        };
+        resolvedDefaultFeatures = [ "alloc" "default" "race" "std" ];
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";

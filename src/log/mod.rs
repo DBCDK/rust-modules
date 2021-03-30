@@ -7,6 +7,7 @@ use std::default::Default;
 use uuid::Uuid;
 use std::fmt::Debug;
 use chrono::prelude::*;
+use once_cell::sync::OnceCell;
 
 #[derive(Serialize, Debug)]
 pub enum LogLevel {
@@ -29,7 +30,6 @@ impl Default for LogLevel {
 }
 
 pub struct LogConfig {
-    pub get_app_name: Box<dyn Fn() -> String>,
     pub get_timestamp: Box<dyn Fn() -> DateTime<Utc>>,
     pub print: Box<dyn Fn(String)>,
 }
@@ -37,20 +37,24 @@ pub struct LogConfig {
 impl Default for LogConfig {
     fn default() -> Self {
         Self{
-            get_app_name: Box::new(|| env!("CARGO_PKG_NAME").to_string()),
             get_timestamp: Box::new(|| Utc::now()),
             print: Box::new(|msg| println!("{}", msg))
         }
     }
 }
 
+static APP_NAME: OnceCell<String> = OnceCell::new();
 
 thread_local! {
     static CONFIG: RefCell<LogConfig> = RefCell::new(LogConfig::default());
     static SESSION_ID: RefCell<Uuid> = RefCell::new(Uuid::nil());
 }
 
-pub fn configure(config: LogConfig) {
+pub fn init(app_name: String) -> Result<(), String> {
+    APP_NAME.set(app_name)
+}
+
+pub fn thread_configure(config: LogConfig) {
     clear_session();
     CONFIG.with(|conf| {
         *conf.borrow_mut() = config
@@ -88,7 +92,7 @@ impl Serialize for LogEntry<'_> {
             let conf = conf_.borrow();
 
             let mut s = serializer.serialize_struct("LogEntry", 8)?;
-            s.serialize_field("app", &(conf.get_app_name)())?;
+            s.serialize_field("app", &APP_NAME.get().or(Some(&env!("CARGO_PKG_NAME").to_string())))?;
             if self.data.is_some() {
                 s.serialize_field("data", &self.data.unwrap())?;
             }
@@ -147,7 +151,7 @@ mod test {
         thread_local! {
             static OUTPUT: RefCell<String> = RefCell::new(String::new());
         }
-        super::configure(LogConfig{
+        super::thread_configure(LogConfig{
             get_timestamp: Box::new(|| Utc.ymd(2014, 7, 8).and_hms(9, 10, 11)),
             print: Box::new(|msg| OUTPUT.with(|output| *output.borrow_mut() = msg)),
             ..Default::default()
@@ -170,7 +174,7 @@ mod test {
         thread_local! {
             static OUTPUT: RefCell<String> = RefCell::new(String::new());
         }
-        super::configure(LogConfig{
+        super::thread_configure(LogConfig{
             get_timestamp: Box::new(|| Utc.ymd(2014, 7, 8).and_hms(9, 10, 11)),
             print: Box::new(|msg| OUTPUT.with(|output| *output.borrow_mut() = msg)),
             ..Default::default()
