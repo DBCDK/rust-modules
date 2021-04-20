@@ -2,6 +2,7 @@
 use std::cell::RefCell;
 use serde::ser::{Serialize, SerializeStruct, Serializer};
 use serde_derive::Serialize;
+use serde_json::json;
 use std::option::Option;
 use std::default::Default;
 use uuid::Uuid;
@@ -90,11 +91,14 @@ impl Serialize for LogEntry<'_> {
         //2016-07-25T17:22:40.835692521+02:00, 2016-07-25T17:22:40.835Z
         CONFIG.with(|conf_| {
             let conf = conf_.borrow();
+            let app_name = APP_NAME.get()
+                .map(std::borrow::ToOwned::to_owned)
+                .unwrap_or(env!("CARGO_PKG_NAME").to_string());
 
             let mut s = serializer.serialize_struct("LogEntry", 8)?;
-            s.serialize_field("app", &APP_NAME.get().or(Some(&env!("CARGO_PKG_NAME").to_string())))?;
+            s.serialize_field("app", &app_name)?;
             if self.data.is_some() {
-                s.serialize_field("data", &self.data.unwrap())?;
+                s.serialize_field("data", &json!({ app_name: &self.data.unwrap() }))?;
             }
             if self.error.is_some() {
                 s.serialize_field("error", &format!("{:?}", self.error.unwrap()))?;
