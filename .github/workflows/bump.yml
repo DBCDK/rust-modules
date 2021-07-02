@@ -2,15 +2,16 @@ name: "Bump-O-Matic"
 
 on:
   schedule:
-    - cron: "30 9 * * FRI"
+    - cron: "0 11 * * FRI"
   # To allow for manual triggering:
   workflow_dispatch:
 
 jobs:
   bump-o-matic:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
+    - uses: cachix/install-nix-action@v12
     - name: Update dependencies
       run: |
         nix-shell --run "niv update"
