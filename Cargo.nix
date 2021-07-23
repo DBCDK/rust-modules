@@ -347,9 +347,9 @@ rec {
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.27";
+        version = "1.0.28";
         edition = "2018";
-        sha256 = "0f3h0zl5w5090ajmmvpmhkpr4iwqnn5rip3afacabhc657vwmn7h";
+        sha256 = "04k6kwfsl56xqv46f9k88jmj7x4544hhbr6xswzfm1mqqywdhzjw";
         authors = [
           "Alex Crichton <alex@alexcrichton.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -475,9 +475,9 @@ rec {
       };
       "syn" = rec {
         crateName = "syn";
-        version = "1.0.73";
+        version = "1.0.74";
         edition = "2018";
-        sha256 = "1ixw4lscc7009ibaic8g5bvnc94hdcr62ksjk3jjl38363zqj57p";
+        sha256 = "175j336afigixhzixxs821sgw2xh38v023y2vg1qhi8dalrdhwqq";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
