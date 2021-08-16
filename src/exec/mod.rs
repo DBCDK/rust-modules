@@ -16,7 +16,7 @@ pub struct CommandWrapped<'l> {
 
 #[derive(Debug)]
 pub struct ExecErrorInfo {
-    error: Box<dyn Error>,
+    error: Box<dyn Error + Send + Sync>,
     trace: String,
     output: Option<Box<Output>>,
 }
@@ -76,7 +76,11 @@ impl fmt::Display for ExecError {
 }
 
 impl ExecErrorInfo {
-    fn new<E, D>(err: E, trace: &D, output: Option<Box<Output>>) -> ExecErrorInfo where E: 'static + Error, D: Debug {
+    fn new<E, D>(
+        err: E,
+        trace: &D,
+        output: Option<Box<Output>>
+    ) -> ExecErrorInfo where E: 'static + Error + Send + Sync, D: Debug {
         ExecErrorInfo {
             error: Box::new(err),
             trace: format!("{:?}", &trace),
