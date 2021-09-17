@@ -272,9 +272,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.101";
+        version = "0.2.102";
         edition = "2015";
-        sha256 = "08dsmvn397ph8gnj552k12gmpp2rk6p60jyliqnfvr8vhwv07c1w";
+        sha256 = "00z1f4hypdkbvajk6rj9yqjk7k4acgg5yzi64flg7z2bk27sr9d2";
         authors = [
           "The Rust Project Developers"
         ];
@@ -442,9 +442,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.67";
+        version = "1.0.68";
         edition = "2018";
-        sha256 = "0l69qli7apsk2x5sm54lclk9v8ih9mp5ywjxpkl0qg3wqa8f7yd7";
+        sha256 = "1n2jg9cf14lrxasj63rlrwxlw5v79m851gycw6zy20jnjx9hhs8g";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
