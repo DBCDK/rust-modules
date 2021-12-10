@@ -272,9 +272,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.108";
+        version = "0.2.110";
         edition = "2015";
-        sha256 = "06finl0p44lvqyw7s0qgc7bgmdz771gfg6bmmxlyrcbngsss28c5";
+        sha256 = "073azi02d93dhbnxv14gm1md24h5qzhqdmsfdj83lkiyfrll92mm";
         authors = [
           "The Rust Project Developers"
         ];
@@ -347,9 +347,9 @@ rec {
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.32";
+        version = "1.0.33";
         edition = "2018";
-        sha256 = "0hqbxlvhiaybakl1gai3mgps1dxsmxricxsr2rfdrh222z0qql5s";
+        sha256 = "0yph154mbnzab21yabw7glkbnljz8b7n11cgya1fah7pbpgx4dzv";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
           "Alex Crichton <alex@alexcrichton.com>"
@@ -399,9 +399,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.130";
+        version = "1.0.131";
         edition = "2015";
-        sha256 = "04y9s1mxcxakg9bhfdiff9w4zzprk6m6dazcpmpi8nfg6zg0cbgi";
+        sha256 = "1hb10pb4m2qj5liiqaqs03xwsr9diisfcr6c6a8kci9yppgnkbdl";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -414,9 +414,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.130";
+        version = "1.0.131";
         edition = "2015";
-        sha256 = "12shxhi47db54i4j44ic2nl299x5p89ngna0w3m6854nn4d1mg6p";
+        sha256 = "1ljqafasqrm8zmipnjdfsgjsk75dfi9bjihra4ynmzqd9qyah45p";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
