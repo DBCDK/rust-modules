@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "kolloch",
         "repo": "crate2nix",
-        "rev": "d0c00673bafbaa648e84fb7595a0e4cd84c3b18a",
-        "sha256": "0qnv6f3svdmdvyqb4zy5cvfj60ihy74m06s82s98s5fwldz7232q",
+        "rev": "9651f0dfa5aec75833cf20690a56e751e010ea96",
+        "sha256": "07jsxpw4yb2822l6na6ljlcgr9hc8fshkhaz5rc6c66rmkbwdn56",
         "type": "tarball",
-        "url": "https://github.com/kolloch/crate2nix/archive/d0c00673bafbaa648e84fb7595a0e4cd84c3b18a.tar.gz",
+        "url": "https://github.com/kolloch/crate2nix/archive/9651f0dfa5aec75833cf20690a56e751e010ea96.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "581d2d6c9cd5c289002203581d8aa0861963a933",
-        "sha256": "1qpmqj075pppa6ihmkacf491lhq7rpxlcm8cm6h18raardsr3irr",
+        "rev": "a2e281f5770247855b85d70c43454ba5bff34613",
+        "sha256": "03m6b3yvx7v8gwib848aclwqpg02rhqdh9h511w9byyfvha9g0fg",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/581d2d6c9cd5c289002203581d8aa0861963a933.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/a2e281f5770247855b85d70c43454ba5bff34613.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
