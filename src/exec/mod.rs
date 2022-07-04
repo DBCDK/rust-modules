@@ -10,6 +10,7 @@ use serde::de::DeserializeOwned;
 
 #[derive(Debug)]
 pub struct CommandWrapped<'l> {
+    #[allow(dead_code)]
     command: &'l mut Command,
     child: Option<Child>
 }
