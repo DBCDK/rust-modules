@@ -7,11 +7,7 @@
 , pkgs ? import nixpkgs { config = {}; }
 , lib ? pkgs.lib
 , stdenv ? pkgs.stdenv
-, buildRustCrateForPkgs ? if buildRustCrate != null
-    then lib.warn "crate2nix: Passing `buildRustCrate` as argument to Cargo.nix is deprecated. If you don't customize `buildRustCrate`, replace `callPackage ./Cargo.nix {}` by `import ./Cargo.nix { inherit pkgs; }`, and if you need to customize `buildRustCrate`, use `buildRustCrateForPkgs` instead." (_: buildRustCrate)
-    else pkgs: pkgs.buildRustCrate
-  # Deprecated
-, buildRustCrate ? null
+, buildRustCrateForPkgs ? pkgs: pkgs.buildRustCrate
   # This is used as the `crateOverrides` argument for `buildRustCrate`.
 , defaultCrateOverrides ? pkgs.defaultCrateOverrides
   # The features to enable for the root_crate or the workspace_members.
@@ -87,6 +83,22 @@ rec {
     #   inject test dependencies into the build
 
     crates = {
+      "android_system_properties" = rec {
+        crateName = "android_system_properties";
+        version = "0.1.4";
+        edition = "2018";
+        sha256 = "17mahdmxq7gq6qyibpjhprcdl8mgh815884lwyiiq4jycghp5vfp";
+        authors = [
+          "Nicolas Silva <nical@fastmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "libc";
+            packageId = "libc";
+          }
+        ];
+
+      };
       "autocfg" = rec {
         crateName = "autocfg";
         version = "1.1.0";
@@ -125,10 +137,16 @@ rec {
       };
       "chrono" = rec {
         crateName = "chrono";
-        version = "0.4.20";
+        version = "0.4.21";
         edition = "2018";
-        sha256 = "1w3sy61i0vn0k2rsgy0m48djr3x7yq796v1g6sda1axr0j1289v1";
+        sha256 = "1sy879843w9hxkzv78yf78q878fcy0hxqdmp7b5y6m1q1hs5ywiz";
         dependencies = [
+          {
+            name = "iana-time-zone";
+            packageId = "iana-time-zone";
+            optional = true;
+            target = { target, features }: (!((target."os" == "emscripten") || (target."os" == "wasi") || (target."os" == "solaris")));
+          }
           {
             name = "js-sys";
             packageId = "js-sys";
@@ -164,9 +182,10 @@ rec {
         ];
         features = {
           "__internal_bench" = [ "criterion" ];
-          "clock" = [ "std" "winapi" ];
+          "clock" = [ "std" "winapi" "iana-time-zone" ];
           "criterion" = [ "dep:criterion" ];
           "default" = [ "clock" "std" "oldtime" ];
+          "iana-time-zone" = [ "dep:iana-time-zone" ];
           "oldtime" = [ "time" ];
           "pure-rust-locales" = [ "dep:pure-rust-locales" ];
           "rkyv" = [ "dep:rkyv" ];
@@ -176,7 +195,18 @@ rec {
           "unstable-locales" = [ "pure-rust-locales" "alloc" ];
           "winapi" = [ "dep:winapi" ];
         };
-        resolvedDefaultFeatures = [ "clock" "default" "oldtime" "std" "time" "winapi" ];
+        resolvedDefaultFeatures = [ "clock" "default" "iana-time-zone" "oldtime" "std" "time" "winapi" ];
+      };
+      "core-foundation-sys" = rec {
+        crateName = "core-foundation-sys";
+        version = "0.8.3";
+        edition = "2015";
+        sha256 = "1p5r2wckarkpkyc4z83q08dwpvcafrb1h6fxfa3qnikh8szww9sq";
+        authors = [
+          "The Servo Project Developers"
+        ];
+        features = {
+        };
       };
       "dbc-rust-modules" = rec {
         crateName = "dbc-rust-modules";
@@ -295,6 +325,45 @@ rec {
           "wasm-bindgen" = [ "dep:wasm-bindgen" ];
         };
       };
+      "iana-time-zone" = rec {
+        crateName = "iana-time-zone";
+        version = "0.1.44";
+        edition = "2018";
+        sha256 = "0jxd7nk9f7q6lwvi811jl0p3z6vnvzmpavp6bgf2m8plgkbgg340";
+        authors = [
+          "Andrew Straw <strawman@astraw.com>"
+        ];
+        dependencies = [
+          {
+            name = "android_system_properties";
+            packageId = "android_system_properties";
+            target = { target, features }: (target."os" == "android");
+          }
+          {
+            name = "core-foundation-sys";
+            packageId = "core-foundation-sys";
+            target = { target, features }: ((target."os" == "macos") || (target."os" == "ios"));
+          }
+          {
+            name = "js-sys";
+            packageId = "js-sys";
+            target = { target, features }: (target."arch" == "wasm32");
+          }
+          {
+            name = "wasm-bindgen";
+            packageId = "wasm-bindgen";
+            target = { target, features }: (target."arch" == "wasm32");
+          }
+          {
+            name = "winapi";
+            packageId = "winapi";
+            target = { target, features }: (target."os" == "windows");
+            features = [ "activation" "combaseapi" "objbase" "roapi" "winerror" "winstring" ];
+          }
+        ];
+        features = {
+        };
+      };
       "itoa" = rec {
         crateName = "itoa";
         version = "1.0.3";
@@ -323,9 +392,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.127";
+        version = "0.2.131";
         edition = "2015";
-        sha256 = "16q0bfrr5xkm0hck20g43s1d0ds0bnwm2pxmn7lr393gf2j72pjh";
+        sha256 = "0h3a0yxfdn6xny5z981z6anjxcj18i9x20zw0afa7gyf5j1b9hq4";
         authors = [
           "The Rust Project Developers"
         ];
@@ -480,9 +549,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.142";
+        version = "1.0.143";
         edition = "2015";
-        sha256 = "1qpyympfvmkmqi0jbsd71kbwqgsg57izc3fhw4hv5dkgj4vw9475";
+        sha256 = "0ls54n526mbqw324h3y62whl54fdbad4vmn6ym7zf909nzaybs2k";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -496,9 +565,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.142";
+        version = "1.0.143";
         edition = "2015";
-        sha256 = "0bnciicgb929l10s19p5q020il8y5ipyrky273sh5gms17cbid9l";
+        sha256 = "14c3p1d87mswxfnz6ly7ah20sscvwpslgfc5dg167vksapgfin6k";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
@@ -869,18 +938,18 @@ rec {
           {
             name = "winapi-i686-pc-windows-gnu";
             packageId = "winapi-i686-pc-windows-gnu";
-            target = { target, features }: (stdenv.hostPlatform.config == "i686-pc-windows-gnu");
+            target = { target, features }: (pkgs.rust.lib.toRustTarget stdenv.hostPlatform == "i686-pc-windows-gnu");
           }
           {
             name = "winapi-x86_64-pc-windows-gnu";
             packageId = "winapi-x86_64-pc-windows-gnu";
-            target = { target, features }: (stdenv.hostPlatform.config == "x86_64-pc-windows-gnu");
+            target = { target, features }: (pkgs.rust.lib.toRustTarget stdenv.hostPlatform == "x86_64-pc-windows-gnu");
           }
         ];
         features = {
           "debug" = [ "impl-debug" ];
         };
-        resolvedDefaultFeatures = [ "minwinbase" "minwindef" "ntdef" "profileapi" "std" "sysinfoapi" "timezoneapi" ];
+        resolvedDefaultFeatures = [ "activation" "combaseapi" "minwinbase" "minwindef" "ntdef" "objbase" "profileapi" "roapi" "std" "sysinfoapi" "timezoneapi" "winerror" "winstring" ];
       };
       "winapi-i686-pc-windows-gnu" = rec {
         crateName = "winapi-i686-pc-windows-gnu";
@@ -911,26 +980,25 @@ rec {
   /* Target (platform) data for conditional dependencies.
     This corresponds roughly to what buildRustCrate is setting.
   */
-  defaultTarget = {
-    unix = true;
-    windows = false;
+  makeDefaultTarget = platform: {
+    unix = platform.isUnix;
+    windows = platform.isWindows;
     fuchsia = true;
     test = false;
 
-    # This doesn't appear to be officially documented anywhere yet.
-    # See https://github.com/rust-lang-nursery/rust-forge/issues/101.
-    os =
-      if stdenv.hostPlatform.isDarwin
-      then "macos"
-      else stdenv.hostPlatform.parsed.kernel.name;
-    arch = stdenv.hostPlatform.parsed.cpu.name;
+    /* We are choosing an arbitrary rust version to grab `lib` from,
+      which is unfortunate, but `lib` has been version-agnostic the
+      whole time so this is good enough for now.
+    */
+    os = pkgs.rust.lib.toTargetOs platform;
+    arch = pkgs.rust.lib.toTargetArch platform;
     family = "unix";
     env = "gnu";
     endian =
-      if stdenv.hostPlatform.parsed.cpu.significantByte.name == "littleEndian"
+      if platform.parsed.cpu.significantByte.name == "littleEndian"
       then "little" else "big";
-    pointer_width = toString stdenv.hostPlatform.parsed.cpu.bits;
-    vendor = stdenv.hostPlatform.parsed.vendor.name;
+    pointer_width = toString platform.parsed.cpu.bits;
+    vendor = platform.parsed.vendor.name;
     debug_assertions = false;
   };
 
@@ -1133,12 +1201,12 @@ rec {
     , crateConfigs ? crates
     , buildRustCrateForPkgsFunc
     , runTests
-    , target ? defaultTarget
+    , makeTarget ? makeDefaultTarget
     } @ args:
       assert (builtins.isAttrs crateConfigs);
       assert (builtins.isString packageId);
       assert (builtins.isList features);
-      assert (builtins.isAttrs target);
+      assert (builtins.isAttrs (makeTarget stdenv.hostPlatform));
       assert (builtins.isBool runTests);
       let
         rootPackageId = packageId;
@@ -1146,7 +1214,7 @@ rec {
           (
             args // {
               inherit rootPackageId;
-              target = target // { test = runTests; };
+              target = makeTarget stdenv.hostPlatform // { test = runTests; };
             }
           );
         # Memoize built packages so that reappearing packages are only built once.
@@ -1155,6 +1223,7 @@ rec {
           let
             self = {
               crates = lib.mapAttrs (packageId: value: buildByPackageIdForPkgsImpl self pkgs packageId) crateConfigs;
+              target = makeTarget pkgs.stdenv.hostPlatform;
               build = mkBuiltByPackageIdByPkgs pkgs.buildPackages;
             };
           in
@@ -1171,7 +1240,8 @@ rec {
                 (crateConfig'.devDependencies or [ ]);
             dependencies =
               dependencyDerivations {
-                inherit features target;
+                inherit features;
+                inherit (self) target;
                 buildByPackageId = depPackageId:
                   # proc_macro crates must be compiled for the build architecture
                   if crateConfigs.${depPackageId}.procMacro or false
@@ -1183,24 +1253,26 @@ rec {
               };
             buildDependencies =
               dependencyDerivations {
-                inherit features target;
+                inherit features;
+                inherit (self.build) target;
                 buildByPackageId = depPackageId:
                   self.build.crates.${depPackageId};
                 dependencies = crateConfig.buildDependencies or [ ];
               };
-            filterEnabledDependenciesForThis = dependencies: filterEnabledDependencies {
-              inherit dependencies features target;
-            };
             dependenciesWithRenames =
-              lib.filter (d: d ? "rename")
-                (
-                  filterEnabledDependenciesForThis
-                    (
-                      (crateConfig.buildDependencies or [ ])
-                      ++ (crateConfig.dependencies or [ ])
-                      ++ devDependencies
-                    )
-                );
+              let
+                buildDeps = filterEnabledDependencies {
+                  inherit features;
+                  inherit (self) target;
+                  dependencies = crateConfig.dependencies or [ ] ++ devDependencies;
+                };
+                hostDeps = filterEnabledDependencies {
+                  inherit features;
+                  inherit (self.build) target;
+                  dependencies = crateConfig.buildDependencies or [ ];
+                };
+              in
+              lib.filter (d: d ? "rename") (hostDeps ++ buildDeps);
             # Crate renames have the form:
             #
             # {
@@ -1275,7 +1347,7 @@ rec {
     else val;
 
   /* Returns various tools to debug a crate. */
-  debugCrate = { packageId, target ? defaultTarget }:
+  debugCrate = { packageId, target ? makeDefaultTarget stdenv.hostPlatform }:
     assert (builtins.isString packageId);
     let
       debug = rec {
