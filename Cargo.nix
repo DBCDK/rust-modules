@@ -111,9 +111,9 @@ rec {
       };
       "bumpalo" = rec {
         crateName = "bumpalo";
-        version = "3.10.0";
-        edition = "2018";
-        sha256 = "1qrx6sg13yxljk1yr705j5wg34iiy3531by1hqrpiihl8qhvvk1p";
+        version = "3.11.0";
+        edition = "2021";
+        sha256 = "0pcfy89hpmixns4qqd4swbhsnvn3mkah0w229wijq3fj30hq5bf1";
         authors = [
           "Nick Fitzgerald <fitzgen@gmail.com>"
         ];
@@ -137,19 +137,20 @@ rec {
       };
       "chrono" = rec {
         crateName = "chrono";
-        version = "0.4.21";
+        version = "0.4.22";
         edition = "2018";
-        sha256 = "1sy879843w9hxkzv78yf78q878fcy0hxqdmp7b5y6m1q1hs5ywiz";
+        sha256 = "1w8ykn9gay819zdwrsz353px580x279xxnrlg6fsi8xa3yrx3m5z";
         dependencies = [
           {
             name = "iana-time-zone";
             packageId = "iana-time-zone";
             optional = true;
-            target = { target, features }: (!((target."os" == "emscripten") || (target."os" == "wasi") || (target."os" == "solaris")));
+            features = [ "fallback" ];
           }
           {
             name = "js-sys";
             packageId = "js-sys";
+            optional = true;
             target = { target, features }: ((target."arch" == "wasm32") && (!((target."os" == "emscripten") || (target."os" == "wasi"))));
           }
           {
@@ -170,6 +171,7 @@ rec {
           {
             name = "wasm-bindgen";
             packageId = "wasm-bindgen";
+            optional = true;
             target = { target, features }: ((target."arch" == "wasm32") && (!((target."os" == "emscripten") || (target."os" == "wasi"))));
           }
           {
@@ -184,8 +186,9 @@ rec {
           "__internal_bench" = [ "criterion" ];
           "clock" = [ "std" "winapi" "iana-time-zone" ];
           "criterion" = [ "dep:criterion" ];
-          "default" = [ "clock" "std" "oldtime" ];
+          "default" = [ "clock" "std" "oldtime" "wasmbind" ];
           "iana-time-zone" = [ "dep:iana-time-zone" ];
+          "js-sys" = [ "dep:js-sys" ];
           "oldtime" = [ "time" ];
           "pure-rust-locales" = [ "dep:pure-rust-locales" ];
           "rkyv" = [ "dep:rkyv" ];
@@ -193,9 +196,11 @@ rec {
           "serde" = [ "dep:serde" ];
           "time" = [ "dep:time" ];
           "unstable-locales" = [ "pure-rust-locales" "alloc" ];
+          "wasm-bindgen" = [ "dep:wasm-bindgen" ];
+          "wasmbind" = [ "wasm-bindgen" "js-sys" ];
           "winapi" = [ "dep:winapi" ];
         };
-        resolvedDefaultFeatures = [ "clock" "default" "iana-time-zone" "oldtime" "std" "time" "winapi" ];
+        resolvedDefaultFeatures = [ "clock" "default" "iana-time-zone" "js-sys" "oldtime" "std" "time" "wasm-bindgen" "wasmbind" "winapi" ];
       };
       "core-foundation-sys" = rec {
         crateName = "core-foundation-sys";
@@ -327,9 +332,9 @@ rec {
       };
       "iana-time-zone" = rec {
         crateName = "iana-time-zone";
-        version = "0.1.44";
+        version = "0.1.46";
         edition = "2018";
-        sha256 = "0jxd7nk9f7q6lwvi811jl0p3z6vnvzmpavp6bgf2m8plgkbgg340";
+        sha256 = "0085cn8kqndxlds6lzx8lqfa9dp0fb6y0gzfsca2cs4rh0rzsaxd";
         authors = [
           "Andrew Straw <strawman@astraw.com>"
         ];
@@ -363,6 +368,7 @@ rec {
         ];
         features = {
         };
+        resolvedDefaultFeatures = [ "fallback" ];
       };
       "itoa" = rec {
         crateName = "itoa";
@@ -392,9 +398,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.131";
+        version = "0.2.132";
         edition = "2015";
-        sha256 = "0h3a0yxfdn6xny5z981z6anjxcj18i9x20zw0afa7gyf5j1b9hq4";
+        sha256 = "199vm5mz5gmd73lx07g06g2d9kl1qrd4dcky2bdrcfhw6kjy8wc3";
         authors = [
           "The Rust Project Developers"
         ];
@@ -478,9 +484,9 @@ rec {
       };
       "once_cell" = rec {
         crateName = "once_cell";
-        version = "1.13.0";
+        version = "1.13.1";
         edition = "2018";
-        sha256 = "1qfqvgnwfzzwxd13ybvplzshaqwnjnna9ghcn0zgijaq0zixp9hq";
+        sha256 = "0kjyjf8yhm1rv5af0f0g7y66mzdy1l1865mr9sw76jbb43d68j07";
         authors = [
           "Aleksey Kladov <aleksey.kladov@gmail.com>"
         ];
