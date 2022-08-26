@@ -276,9 +276,9 @@ rec {
       };
       "erased-serde" = rec {
         crateName = "erased-serde";
-        version = "0.3.22";
+        version = "0.3.23";
         edition = "2018";
-        sha256 = "087hysr6h1h529ynj0a1al39w1lh326yzlnlgf2ra3xd2bkh0c00";
+        sha256 = "04afryi4wyydgsgfmh3y5kil5m6pp772wr3j00l29gkgm45qwmal";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -555,9 +555,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.143";
+        version = "1.0.144";
         edition = "2015";
-        sha256 = "0ls54n526mbqw324h3y62whl54fdbad4vmn6ym7zf909nzaybs2k";
+        sha256 = "0q3qy4cv4jjmwa23nrgrppfxh2g8ahr7fs4iijw47k9xvq87fx0g";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -571,9 +571,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.143";
+        version = "1.0.144";
         edition = "2015";
-        sha256 = "14c3p1d87mswxfnz6ly7ah20sscvwpslgfc5dg167vksapgfin6k";
+        sha256 = "003sx1ihjcfwj2az357qj7i38b1ji3w8krw35y0h3ldidy0kmvcl";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
@@ -599,9 +599,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.83";
+        version = "1.0.85";
         edition = "2018";
-        sha256 = "19ymnc0rvm7pacy22dq99ngxhnpyxg7bv7gj3srpb7i7r3ih9p9q";
+        sha256 = "0i2akpn5js5jv0nm5vwrwk3xsm40pbdi82kda3h5r7ggmbijhnp5";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -1536,7 +1536,7 @@ rec {
       len = builtins.stringLength prefix;
       startsWithPrefix = builtins.substring 0 len feature == prefix;
     in
-    feature == name || startsWithPrefix;
+    feature == name || feature == "dep:" + name || startsWithPrefix;
 
   /* Returns the expanded features for the given inputFeatures by applying the
     rules in featureMap.
