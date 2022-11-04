@@ -123,10 +123,10 @@ rec {
       };
       "cc" = rec {
         crateName = "cc";
-        version = "1.0.73";
+        version = "1.0.74";
         edition = "2018";
         crateBin = [];
-        sha256 = "04ccylrjq94jssh8f7d7hxv64gs9f1m1jrsxb7wqgfxk4xljmzrg";
+        sha256 = "0x0m14cizayy1ydiyvw76gl0wij8120w8ppb7zm55b1sj2x5s7sq";
         authors = [
           "Alex Crichton <alex@alexcrichton.com>"
         ];
@@ -499,9 +499,9 @@ rec {
       };
       "iana-time-zone" = rec {
         crateName = "iana-time-zone";
-        version = "0.1.52";
+        version = "0.1.53";
         edition = "2018";
-        sha256 = "0am5413q9brv98nwpmqc3riqxar25kgc7xdczh50sjc0dr7zn8n4";
+        sha256 = "0ra7nvai8n3alvljswacjbnhfcpivpi7xqbc5n048w18gdk25hb4";
         authors = [
           "Andrew Straw <strawman@astraw.com>"
           "René Kijewski <rene.kijewski@fu-berlin.de>"
@@ -702,15 +702,18 @@ rec {
       };
       "once_cell" = rec {
         crateName = "once_cell";
-        version = "1.15.0";
+        version = "1.16.0";
         edition = "2021";
-        sha256 = "1q9r8c0ls1qgjp89p4rd36sjv4671pz6710c106ajwcv2c2asbg8";
+        sha256 = "0q3q5fpalz6a0db25y75709g9x8g2yzyih888p3xp7krpzab1w46";
         authors = [
           "Aleksey Kladov <aleksey.kladov@gmail.com>"
         ];
         features = {
           "alloc" = [ "race" ];
-          "atomic-polyfill" = [ "dep:atomic-polyfill" ];
+          "atomic-polyfill" = [ "critical-section" ];
+          "atomic_polyfill" = [ "dep:atomic_polyfill" ];
+          "critical-section" = [ "critical_section" "atomic_polyfill" ];
+          "critical_section" = [ "dep:critical_section" ];
           "default" = [ "std" ];
           "parking_lot" = [ "parking_lot_core" ];
           "parking_lot_core" = [ "dep:parking_lot_core" ];
