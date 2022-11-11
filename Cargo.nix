@@ -123,10 +123,10 @@ rec {
       };
       "cc" = rec {
         crateName = "cc";
-        version = "1.0.74";
+        version = "1.0.76";
         edition = "2018";
         crateBin = [];
-        sha256 = "0x0m14cizayy1ydiyvw76gl0wij8120w8ppb7zm55b1sj2x5s7sq";
+        sha256 = "13wjzcry62yqmli0w0v0zlni2qsk8c9igrak4cphkqkg5vd898kn";
         authors = [
           "Alex Crichton <alex@alexcrichton.com>"
         ];
@@ -165,7 +165,7 @@ rec {
             name = "js-sys";
             packageId = "js-sys";
             optional = true;
-            target = { target, features }: ((target."arch" == "wasm32") && (!((target."os" == "emscripten") || (target."os" == "wasi"))));
+            target = { target, features }: (("wasm32" == target."arch") && (!(("emscripten" == target."os") || ("wasi" == target."os"))));
           }
           {
             name = "num-integer";
@@ -186,7 +186,7 @@ rec {
             name = "wasm-bindgen";
             packageId = "wasm-bindgen";
             optional = true;
-            target = { target, features }: ((target."arch" == "wasm32") && (!((target."os" == "emscripten") || (target."os" == "wasi"))));
+            target = { target, features }: (("wasm32" == target."arch") && (!(("emscripten" == target."os") || ("wasi" == target."os"))));
           }
           {
             name = "winapi";
@@ -252,9 +252,9 @@ rec {
       };
       "cxx" = rec {
         crateName = "cxx";
-        version = "1.0.80";
+        version = "1.0.81";
         edition = "2018";
-        sha256 = "0fizn8xhjdxj270h4x98zmmalan3rx7isskhc939jg2xn91lwzbb";
+        sha256 = "127qh7i75gsgglxx5ska6sr6q3kifr754idrh5zjprd9xkqgkawp";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -290,9 +290,9 @@ rec {
       };
       "cxx-build" = rec {
         crateName = "cxx-build";
-        version = "1.0.80";
+        version = "1.0.81";
         edition = "2018";
-        sha256 = "09sqbqfwh2i7fvjk33x2ns65mdjjqmj2a6p5d09jqgi1vjfq5y44";
+        sha256 = "18yyac2skywm2521s7wwiad0c41136gxp796gnvr9n51zv2jrhvw";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -337,9 +337,9 @@ rec {
       };
       "cxxbridge-flags" = rec {
         crateName = "cxxbridge-flags";
-        version = "1.0.80";
+        version = "1.0.81";
         edition = "2018";
-        sha256 = "0sn5gh26cmzsqb2k3q3zxw4mvlxnsi0pqr06113g2jj79d13f9g7";
+        sha256 = "07ygmapwbvnjz3li45yzy81c7m3ahm13nz10n734v4scg7j218lc";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -349,9 +349,9 @@ rec {
       };
       "cxxbridge-macro" = rec {
         crateName = "cxxbridge-macro";
-        version = "1.0.80";
+        version = "1.0.81";
         edition = "2018";
-        sha256 = "1mx4q1xxslfi1v130y7wm4xq30cz41ms23ga9ghy347d7swlz7ih";
+        sha256 = "0107pqlci0wls9yb39xw9fjkpn0z9v440fcxvk4by98i6s0z0imq";
         procMacro = true;
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
@@ -485,7 +485,7 @@ rec {
           {
             name = "wasi";
             packageId = "wasi 0.11.0+wasi-snapshot-preview1";
-            target = { target, features }: (target."os" == "wasi");
+            target = { target, features }: ("wasi" == target."os");
           }
         ];
         features = {
@@ -511,32 +511,32 @@ rec {
           {
             name = "android_system_properties";
             packageId = "android_system_properties";
-            target = { target, features }: (target."os" == "android");
+            target = { target, features }: ("android" == target."os");
           }
           {
             name = "core-foundation-sys";
             packageId = "core-foundation-sys";
-            target = { target, features }: ((target."os" == "macos") || (target."os" == "ios"));
+            target = { target, features }: (("macos" == target."os") || ("ios" == target."os"));
           }
           {
             name = "iana-time-zone-haiku";
             packageId = "iana-time-zone-haiku";
-            target = { target, features }: (target."os" == "haiku");
+            target = { target, features }: ("haiku" == target."os");
           }
           {
             name = "js-sys";
             packageId = "js-sys";
-            target = { target, features }: (target."arch" == "wasm32");
+            target = { target, features }: ("wasm32" == target."arch");
           }
           {
             name = "wasm-bindgen";
             packageId = "wasm-bindgen";
-            target = { target, features }: (target."arch" == "wasm32");
+            target = { target, features }: ("wasm32" == target."arch");
           }
           {
             name = "winapi";
             packageId = "winapi";
-            target = { target, features }: (target."os" == "windows");
+            target = { target, features }: ("windows" == target."os");
             features = [ "activation" "combaseapi" "objbase" "roapi" "winerror" "winstring" ];
           }
         ];
@@ -935,7 +935,7 @@ rec {
           {
             name = "wasi";
             packageId = "wasi 0.10.0+wasi-snapshot-preview1";
-            target = { target, features }: (target."os" == "wasi");
+            target = { target, features }: ("wasi" == target."os");
           }
           {
             name = "winapi";
@@ -1281,7 +1281,7 @@ rec {
     */
     os = pkgs.rust.lib.toTargetOs platform;
     arch = pkgs.rust.lib.toTargetArch platform;
-    family = "unix";
+    family = pkgs.rust.lib.toTargetFamily platform;
     env = "gnu";
     endian =
       if platform.parsed.cpu.significantByte.name == "littleEndian"
