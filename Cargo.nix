@@ -151,9 +151,9 @@ rec {
       };
       "chrono" = rec {
         crateName = "chrono";
-        version = "0.4.22";
+        version = "0.4.23";
         edition = "2018";
-        sha256 = "1w8ykn9gay819zdwrsz353px580x279xxnrlg6fsi8xa3yrx3m5z";
+        sha256 = "07s1hnrw8zpmgf76fj5sx0dzxny5p1xs703p0li4n8h1xpcs7c0n";
         dependencies = [
           {
             name = "iana-time-zone";
@@ -198,6 +198,7 @@ rec {
         ];
         features = {
           "__internal_bench" = [ "criterion" ];
+          "arbitrary" = [ "dep:arbitrary" ];
           "clock" = [ "std" "winapi" "iana-time-zone" ];
           "criterion" = [ "dep:criterion" ];
           "default" = [ "clock" "std" "oldtime" "wasmbind" ];
@@ -252,9 +253,9 @@ rec {
       };
       "cxx" = rec {
         crateName = "cxx";
-        version = "1.0.81";
+        version = "1.0.82";
         edition = "2018";
-        sha256 = "127qh7i75gsgglxx5ska6sr6q3kifr754idrh5zjprd9xkqgkawp";
+        sha256 = "0lzlzaywnaf0qacqnx6xk97jvpfanwb9jxzav7syf3qdaf31m96l";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -290,9 +291,9 @@ rec {
       };
       "cxx-build" = rec {
         crateName = "cxx-build";
-        version = "1.0.81";
+        version = "1.0.82";
         edition = "2018";
-        sha256 = "18yyac2skywm2521s7wwiad0c41136gxp796gnvr9n51zv2jrhvw";
+        sha256 = "1w52b6k5r2zq81885l64rvwnr8jxmspxi36dy4nsvqzkgxk6sh86";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -337,9 +338,9 @@ rec {
       };
       "cxxbridge-flags" = rec {
         crateName = "cxxbridge-flags";
-        version = "1.0.81";
+        version = "1.0.82";
         edition = "2018";
-        sha256 = "07ygmapwbvnjz3li45yzy81c7m3ahm13nz10n734v4scg7j218lc";
+        sha256 = "0wfgqzi67fp025h36cb79cn6l6gxdx3iy9yb4zpyx7b6y4m9l2l2";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -349,9 +350,9 @@ rec {
       };
       "cxxbridge-macro" = rec {
         crateName = "cxxbridge-macro";
-        version = "1.0.81";
+        version = "1.0.82";
         edition = "2018";
-        sha256 = "0107pqlci0wls9yb39xw9fjkpn0z9v440fcxvk4by98i6s0z0imq";
+        sha256 = "0w7lflr6ksrkdf4ybg6sipiwxd5ind6zbamlsfd0h2iprhpnx2m0";
         procMacro = true;
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
@@ -830,9 +831,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.87";
+        version = "1.0.88";
         edition = "2018";
-        sha256 = "0ibxrq43axvspv350wvx7w05l4s7b1gvaa0dysf6pmshn6vpgrvc";
+        sha256 = "1mwb1rjqwnlzm3fs1bk7jy9kx0w6fmlzp1wn9lcfhqlj600ki2wf";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
