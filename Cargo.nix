@@ -787,9 +787,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.147";
+        version = "1.0.148";
         edition = "2015";
-        sha256 = "0rc9jj8bbhf3lkf07ln8kyljigyzc4kk90nzg4dc2gwqmsdxd4yi";
+        sha256 = "1p62a9n1527bv3k0fmjgny1ps12mr90v3qbn0rnis6d09fxn8gz5";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -803,9 +803,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.147";
+        version = "1.0.148";
         edition = "2015";
-        sha256 = "0ln8rqbybpxmk4fvh6lgm75acs1d8x90fi44fhx3x77wm0n3c7ag";
+        sha256 = "031cp7vd2zq479zjrzpwpfzhphilgng30dv1pyx22dd5b9194m55";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
@@ -871,9 +871,9 @@ rec {
       };
       "syn" = rec {
         crateName = "syn";
-        version = "1.0.103";
+        version = "1.0.105";
         edition = "2018";
-        sha256 = "0pa4b6g938drphblgdhmjnzclp7gcbf4zdgkmfaxlfhk54i08r58";
+        sha256 = "0279ivl07g0y5fs5bwmglhkdvi99ypcm36yb774f8bbh8lyv9fb0";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -922,9 +922,9 @@ rec {
       };
       "time" = rec {
         crateName = "time";
-        version = "0.1.44";
+        version = "0.1.45";
         edition = "2015";
-        sha256 = "0m9jwy2pcmk232r3b9r80fs12mkckfjffjha4qfaxcdq9a8ydfbd";
+        sha256 = "0nl0pzv9yf56djy8y5dx25nka5pr2q1ivlandb3d24pksgx7ly8v";
         authors = [
           "The Rust Project Developers"
         ];
@@ -1879,11 +1879,21 @@ rec {
       explicitFeatures = dependency.features or [ ];
       additionalDependencyFeatures =
         let
-          dependencyPrefix = (dependency.rename or dependency.name) + "/";
-          dependencyFeatures =
-            builtins.filter (f: lib.hasPrefix dependencyPrefix f) features;
+          name = dependency.rename or dependency.name;
+          stripPrefixMatch = prefix: s:
+            if lib.hasPrefix prefix s
+            then lib.removePrefix prefix s
+            else null;
+          extractFeature = feature: lib.findFirst
+            (f: f != null)
+            null
+            (map (prefix: stripPrefixMatch prefix feature) [
+              (name + "/")
+              (name + "?/")
+            ]);
+          dependencyFeatures = lib.filter (f: f != null) (map extractFeature features);
         in
-        builtins.map (lib.removePrefix dependencyPrefix) dependencyFeatures;
+        dependencyFeatures;
     in
     defaultOrNil ++ explicitFeatures ++ additionalDependencyFeatures;
 
