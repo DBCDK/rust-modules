@@ -111,9 +111,9 @@ rec {
       };
       "bumpalo" = rec {
         crateName = "bumpalo";
-        version = "3.11.1";
+        version = "3.12.0";
         edition = "2021";
-        sha256 = "1fl072w8wia496byc2h6ck2159sir2jjrb8niwq8h4916r8njbsp";
+        sha256 = "0damxqdgqqzp3zyfwvbrg5hzx39kqgxnxl3yyq3kk4ald0jiw9hd";
         authors = [
           "Nick Fitzgerald <fitzgen@gmail.com>"
         ];
@@ -253,9 +253,9 @@ rec {
       };
       "cxx" = rec {
         crateName = "cxx";
-        version = "1.0.86";
+        version = "1.0.87";
         edition = "2018";
-        sha256 = "0yc5gz723hiwqk7waygj63655fh5vzq3551p1j2wyzc06xf0glai";
+        sha256 = "0bk2n4ync7m99xspdxajqyzi07i2q3yf23d7w35qpa2kyx2pa6mn";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -291,9 +291,9 @@ rec {
       };
       "cxx-build" = rec {
         crateName = "cxx-build";
-        version = "1.0.86";
+        version = "1.0.87";
         edition = "2018";
-        sha256 = "0w5a2wdkdh44gmi0psynaazx4j7d1947sr7nyaccayxjc4gjhi2h";
+        sha256 = "001jnlv9adf1rmhka2ja10cs7as291qc9c33bj8dcpjb95ylar7l";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -338,9 +338,9 @@ rec {
       };
       "cxxbridge-flags" = rec {
         crateName = "cxxbridge-flags";
-        version = "1.0.86";
+        version = "1.0.87";
         edition = "2018";
-        sha256 = "073qx3gnf8df9xzfy9xfcz9b79m0638x4a0isfq2fb527g4hpdb1";
+        sha256 = "1smaldilxyifgsw5gl194sfkkz7nmjwi116a3bc1ww53wff13is3";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -350,9 +350,9 @@ rec {
       };
       "cxxbridge-macro" = rec {
         crateName = "cxxbridge-macro";
-        version = "1.0.86";
+        version = "1.0.87";
         edition = "2018";
-        sha256 = "19c7pjvjll72yb9wyrmpdylwqglizn8kayww8qcm24b2gvd1zrir";
+        sha256 = "0zphv8qdz1jv2fbab5s90rkx74c9hyhli9hgj48fcl85p447bq35";
         procMacro = true;
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
@@ -724,9 +724,9 @@ rec {
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.49";
+        version = "1.0.50";
         edition = "2018";
-        sha256 = "19b3xdfmnay9mchza82lhb3n8qjrfzkxwd23f50xxzy4z6lyra2p";
+        sha256 = "1qmsy8372anynndlfa0qig5y73gjnyvxldsrxs52vbygx9xxbxvf";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
           "Alex Crichton <alex@alexcrichton.com>"
@@ -905,9 +905,9 @@ rec {
       };
       "termcolor" = rec {
         crateName = "termcolor";
-        version = "1.1.3";
+        version = "1.2.0";
         edition = "2018";
-        sha256 = "0mbpflskhnz3jf312k50vn0hqbql8ga2rk0k79pkgchip4q4vcms";
+        sha256 = "1dmrbsljxpfng905qkaxljlwjhv8h0i3969cbiv5rb7y8a4wymdy";
         authors = [
           "Andrew Gallant <jamslam@gmail.com>"
         ];
