@@ -123,10 +123,10 @@ rec {
       };
       "cc" = rec {
         crateName = "cc";
-        version = "1.0.78";
+        version = "1.0.79";
         edition = "2018";
         crateBin = [];
-        sha256 = "0gcch8g41jsjs4zk8fy7k4jhc33sfqdab4nxsrcsds2w6gi080d2";
+        sha256 = "07x93b8zbf3xc2dggdd460xlk1wg8lxm6yflwddxj8b15030klsh";
         authors = [
           "Alex Crichton <alex@alexcrichton.com>"
         ];
@@ -253,9 +253,9 @@ rec {
       };
       "cxx" = rec {
         crateName = "cxx";
-        version = "1.0.88";
+        version = "1.0.89";
         edition = "2018";
-        sha256 = "1f20r1fm2x8mzvks62zj38kpw0zz09dfiyadnmq45bz5ybi9c8ij";
+        sha256 = "1s84camr1hmbwvk6zydy0ycsm1x577k9ax9idr1rbm1dlgk1x0xw";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -291,9 +291,9 @@ rec {
       };
       "cxx-build" = rec {
         crateName = "cxx-build";
-        version = "1.0.88";
+        version = "1.0.89";
         edition = "2018";
-        sha256 = "1n0i44mjcp7zbgv8fahy959pplqjy34m3wdifmw1wqsxn22i6yh1";
+        sha256 = "17bq8ri81w1zpw4gvldlvjkhb7ggmbmgfj8hv1f8ka5iy5a1scwl";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -338,9 +338,9 @@ rec {
       };
       "cxxbridge-flags" = rec {
         crateName = "cxxbridge-flags";
-        version = "1.0.88";
+        version = "1.0.89";
         edition = "2018";
-        sha256 = "0wg9ki4zr3hkg41wpvbl92yjip9vy0il4bd0rlgbq2fgi83vnsy2";
+        sha256 = "12pb3wzdjqfkvrjlbmzfp3dkbn133yb3jjsbdq6v9aacl5dx7p28";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -350,9 +350,9 @@ rec {
       };
       "cxxbridge-macro" = rec {
         crateName = "cxxbridge-macro";
-        version = "1.0.88";
+        version = "1.0.89";
         edition = "2018";
-        sha256 = "0bi53snw4jz8ck8axcmc6a6x41gvq512a4pyw45bc93ay38l0zrm";
+        sha256 = "1li4a5phyrqjns85jisik39f11kj3bg4lcm3hb6pqh4bg4lypfw1";
         procMacro = true;
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
@@ -387,7 +387,7 @@ rec {
         edition = "2018";
         # We can't filter paths with references in Nix 2.4
         # See https://github.com/NixOS/nix/issues/5410
-        src = if (lib.versionOlder builtins.nixVersion "2.4pre20211007")
+        src = if ((lib.versionOlder builtins.nixVersion "2.4pre20211007") || (lib.versionOlder "2.5" builtins.nixVersion ))
           then lib.cleanSourceWith { filter = sourceFilter;  src = ./.; }
           else ./.;
         dependencies = [
@@ -581,9 +581,9 @@ rec {
       };
       "js-sys" = rec {
         crateName = "js-sys";
-        version = "0.3.60";
+        version = "0.3.61";
         edition = "2018";
-        sha256 = "0isslargvb1cd5xfk73xrxqni3p2ksharkp22swmc25zwgrrsh29";
+        sha256 = "0c075apyc5fxp2sbgr87qcvq53pcjxmp05l47lzlhpn5a0hxwpa4";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1054,9 +1054,9 @@ rec {
       };
       "wasm-bindgen" = rec {
         crateName = "wasm-bindgen";
-        version = "0.2.83";
+        version = "0.2.84";
         edition = "2018";
-        sha256 = "0s3ji0k8p261glnsxi5rkd34v2pv67h96blb29yf32zcxsngbyga";
+        sha256 = "0fx5gh0b4n6znfa3blz92wn1k4bbiysyq9m95s7rn3gk46ydry1i";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1084,9 +1084,9 @@ rec {
       };
       "wasm-bindgen-backend" = rec {
         crateName = "wasm-bindgen-backend";
-        version = "0.2.83";
+        version = "0.2.84";
         edition = "2018";
-        sha256 = "0hhigjqrb31axh7jgmb5y8akdpxqx8gvjs6ja9xmbc3r4lrzp3sc";
+        sha256 = "1ffc0wb293ha56i66f830x7f8aa2xql69a21lrasy1ncbgyr1klm";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1128,9 +1128,9 @@ rec {
       };
       "wasm-bindgen-macro" = rec {
         crateName = "wasm-bindgen-macro";
-        version = "0.2.83";
+        version = "0.2.84";
         edition = "2018";
-        sha256 = "0468wshk7bp78mnglcpmrb6m4q7x2fp9pz6ybk3wpri683wy0aq5";
+        sha256 = "1idlq28awqhq8rclb22rn5xix82w9a4rgy11vkapzhzd1dygf8ac";
         procMacro = true;
         authors = [
           "The wasm-bindgen Developers"
@@ -1153,9 +1153,9 @@ rec {
       };
       "wasm-bindgen-macro-support" = rec {
         crateName = "wasm-bindgen-macro-support";
-        version = "0.2.83";
+        version = "0.2.84";
         edition = "2018";
-        sha256 = "0g0rmawgkhfyfgjj2mvch7gvz1nzfnfmya0kgcq3xwn53l2hrg07";
+        sha256 = "1xm56lpi0rihh8ny7x085dgs3jdm47spgqflb98wghyadwq83zra";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1190,9 +1190,9 @@ rec {
       };
       "wasm-bindgen-shared" = rec {
         crateName = "wasm-bindgen-shared";
-        version = "0.2.83";
+        version = "0.2.84";
         edition = "2018";
-        sha256 = "0zzz9xfi3fp2n5ihhlq8ws7674a2ir2frvsd1d7yr4sxad2w0f0w";
+        sha256 = "0pcvk1c97r1pprzfaxxn359r0wqg5bm33ylbwgjh8f4cwbvzwih0";
         authors = [
           "The wasm-bindgen Developers"
         ];
