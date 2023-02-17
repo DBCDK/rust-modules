@@ -253,9 +253,9 @@ rec {
       };
       "cxx" = rec {
         crateName = "cxx";
-        version = "1.0.89";
+        version = "1.0.91";
         edition = "2018";
-        sha256 = "1s84camr1hmbwvk6zydy0ycsm1x577k9ax9idr1rbm1dlgk1x0xw";
+        sha256 = "0qhxmwf3zbgjmi3073ccc33jpsqa1pcvs9bynn1s99v5fs74ilw6";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -291,9 +291,9 @@ rec {
       };
       "cxx-build" = rec {
         crateName = "cxx-build";
-        version = "1.0.89";
+        version = "1.0.91";
         edition = "2018";
-        sha256 = "17bq8ri81w1zpw4gvldlvjkhb7ggmbmgfj8hv1f8ka5iy5a1scwl";
+        sha256 = "1456bnn9yikf071kbdxqxdzpd2vkk5yxa57v3nl42fh5d83azz28";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -338,9 +338,9 @@ rec {
       };
       "cxxbridge-flags" = rec {
         crateName = "cxxbridge-flags";
-        version = "1.0.89";
+        version = "1.0.91";
         edition = "2018";
-        sha256 = "12pb3wzdjqfkvrjlbmzfp3dkbn133yb3jjsbdq6v9aacl5dx7p28";
+        sha256 = "1gvrwi7ghbl76zpnhyr2mc9q1r72z7hq1bq3av52ka0pnyw9ivx2";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -350,9 +350,9 @@ rec {
       };
       "cxxbridge-macro" = rec {
         crateName = "cxxbridge-macro";
-        version = "1.0.89";
+        version = "1.0.91";
         edition = "2018";
-        sha256 = "1li4a5phyrqjns85jisik39f11kj3bg4lcm3hb6pqh4bg4lypfw1";
+        sha256 = "14lqs4lgnxpzn4pz36c5lfaj4r2wr5b7ikz5aqv49656g5cnhv08";
         procMacro = true;
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
@@ -703,9 +703,9 @@ rec {
       };
       "once_cell" = rec {
         crateName = "once_cell";
-        version = "1.17.0";
+        version = "1.17.1";
         edition = "2021";
-        sha256 = "0rpackaf6ljxkcaa3svaiak1ddsbh0hqf5z3l7bb78hyfjhznqbg";
+        sha256 = "1lrsy9c5ikf2iwxr4iwgd3rlq9mg8alh0np1g8abnvp1k4151rdp";
         authors = [
           "Aleksey Kladov <aleksey.kladov@gmail.com>"
         ];
@@ -724,9 +724,9 @@ rec {
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.50";
+        version = "1.0.51";
         edition = "2018";
-        sha256 = "1qmsy8372anynndlfa0qig5y73gjnyvxldsrxs52vbygx9xxbxvf";
+        sha256 = "1mj9r146akd3ldfic70bzqr7hwxd35lr0h551yk1vlirbfp7qwjx";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
           "Alex Crichton <alex@alexcrichton.com>"
@@ -831,9 +831,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.91";
+        version = "1.0.93";
         edition = "2018";
-        sha256 = "10v8vb4959ayycw1zmqvxxi758djqkskchj6qal0fjbi6daj6z47";
+        sha256 = "0xmwq2838lvc50g849k8qsrwvj7nfaaw5wns0x8mp24ikjv0dm6a";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
