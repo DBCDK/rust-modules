@@ -253,9 +253,9 @@ rec {
       };
       "cxx" = rec {
         crateName = "cxx";
-        version = "1.0.91";
+        version = "1.0.92";
         edition = "2018";
-        sha256 = "0qhxmwf3zbgjmi3073ccc33jpsqa1pcvs9bynn1s99v5fs74ilw6";
+        sha256 = "0wkv914ny8h73v3qjslc72s9l333rvknbz4b7c0pjgvg1qk0y54s";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -291,9 +291,9 @@ rec {
       };
       "cxx-build" = rec {
         crateName = "cxx-build";
-        version = "1.0.91";
+        version = "1.0.92";
         edition = "2018";
-        sha256 = "1456bnn9yikf071kbdxqxdzpd2vkk5yxa57v3nl42fh5d83azz28";
+        sha256 = "04z6p10816w2dzr2y4aghwhw97bkg4ls9w2b6y4sc7ilb7s86qys";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -338,9 +338,9 @@ rec {
       };
       "cxxbridge-flags" = rec {
         crateName = "cxxbridge-flags";
-        version = "1.0.91";
+        version = "1.0.92";
         edition = "2018";
-        sha256 = "1gvrwi7ghbl76zpnhyr2mc9q1r72z7hq1bq3av52ka0pnyw9ivx2";
+        sha256 = "15zcakzjxjjv0y9hlq3fghqxsfr18fiva2wc3kzwr58fcld1q84h";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -350,9 +350,9 @@ rec {
       };
       "cxxbridge-macro" = rec {
         crateName = "cxxbridge-macro";
-        version = "1.0.91";
+        version = "1.0.92";
         edition = "2018";
-        sha256 = "14lqs4lgnxpzn4pz36c5lfaj4r2wr5b7ikz5aqv49656g5cnhv08";
+        sha256 = "0mnyp37s6k3iccr4ygn12gdm3a0pz1p35rirmry3drmj3gaawx8b";
         procMacro = true;
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
@@ -444,9 +444,9 @@ rec {
       };
       "erased-serde" = rec {
         crateName = "erased-serde";
-        version = "0.3.24";
+        version = "0.3.25";
         edition = "2018";
-        sha256 = "0zdaj96bf39h75rkdxkd1znik97s3j7m8ppgbxxfq5y0h59n1jp4";
+        sha256 = "0sa5i6gh5hcagbzmbayfx3fwvz5axij5z3kcigm94fj5h0ihqasg";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -569,9 +569,9 @@ rec {
       };
       "itoa" = rec {
         crateName = "itoa";
-        version = "1.0.5";
+        version = "1.0.6";
         edition = "2018";
-        sha256 = "0h343sak699ci49anaa7l3p94b9kcc4ypaqwcam6qsz8p7s85mgs";
+        sha256 = "19jc2sa3wvdc29zhgbwf3bayikq4rq18n20dbyg9ahd4hbsxjfj5";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -597,9 +597,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.139";
+        version = "0.2.140";
         edition = "2015";
-        sha256 = "0yaz3z56c72p2nfgv2y2zdi8bzi7x3kdq2hzgishgw0da8ky6790";
+        sha256 = "037qjmhfv8iyzfv6zqapxxvf6p1ydg6dzgzhkjbimbhzj8s768lr";
         authors = [
           "The Rust Project Developers"
         ];
@@ -765,9 +765,9 @@ rec {
       };
       "ryu" = rec {
         crateName = "ryu";
-        version = "1.0.12";
+        version = "1.0.13";
         edition = "2018";
-        sha256 = "1ppcgnyfs12p545bl7762jp9b11rlzmgb7yzrr5lnzb8xm1rfjvv";
+        sha256 = "0hchlxvjmsz51l06c7r8zwj45pm8bhc3x3czcih27rkx8v03j4zr";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -777,9 +777,9 @@ rec {
       };
       "scratch" = rec {
         crateName = "scratch";
-        version = "1.0.3";
+        version = "1.0.5";
         edition = "2015";
-        sha256 = "1ck1ky9fbgh2c1mlypmlvyw3j1rai1pl7ngd7wxh4wz1ridv3k6x";
+        sha256 = "1hchqnh9ggsrisyaaasfqa0r484r75xh2lw87w6fcnz9bh1xp4hp";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -787,9 +787,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.152";
+        version = "1.0.154";
         edition = "2015";
-        sha256 = "1ysykpc4a9f1yn7zikdwhyfs0bpa7mlc8vsm7sl4glr1606iyzdv";
+        sha256 = "17n4c5lx3g67gi5ifjvqk43x0sri56qvz6ssnhd7yplj2c91bpcc";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -803,9 +803,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.152";
+        version = "1.0.154";
         edition = "2015";
-        sha256 = "07jlbk3khspawlqayr5lhzgqirv031ap4p8asw199l7ciq8psj5g";
+        sha256 = "05rjwflrzyabv0sn0d7h70cxri7ssqyagjf2zp53ni9m55r0vj2g";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
@@ -831,9 +831,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.93";
+        version = "1.0.94";
         edition = "2018";
-        sha256 = "0xmwq2838lvc50g849k8qsrwvj7nfaaw5wns0x8mp24ikjv0dm6a";
+        sha256 = "1sh4bmv8964355080d4lzjwd2kazbvyz0cdbqq4kmafqr5ckllqw";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -958,9 +958,9 @@ rec {
       };
       "unicode-ident" = rec {
         crateName = "unicode-ident";
-        version = "1.0.6";
+        version = "1.0.8";
         edition = "2018";
-        sha256 = "1g2fdsw5sv9l1m73whm99za3lxq3nw4gzx5kvi562h4b46gjp8l4";
+        sha256 = "1x4v4v95fv9gn5zbpm23sa9awjvmclap1wh1lmikmw9rna3llip5";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
