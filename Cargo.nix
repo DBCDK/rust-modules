@@ -111,9 +111,9 @@ rec {
       };
       "bumpalo" = rec {
         crateName = "bumpalo";
-        version = "3.12.0";
+        version = "3.12.1";
         edition = "2021";
-        sha256 = "0damxqdgqqzp3zyfwvbrg5hzx39kqgxnxl3yyq3kk4ald0jiw9hd";
+        sha256 = "1j7hjszs00lgl1ddwg4369f4jh87cbpf1m3xzczz751n0scy274v";
         authors = [
           "Nick Fitzgerald <fitzgen@gmail.com>"
         ];
