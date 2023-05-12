@@ -111,9 +111,9 @@ rec {
       };
       "bumpalo" = rec {
         crateName = "bumpalo";
-        version = "3.12.1";
+        version = "3.12.2";
         edition = "2021";
-        sha256 = "1j7hjszs00lgl1ddwg4369f4jh87cbpf1m3xzczz751n0scy274v";
+        sha256 = "0fy6fkz4x58jdzm6r07ym264bnfpq1gc210vvl90rzzck17djviw";
         authors = [
           "Nick Fitzgerald <fitzgen@gmail.com>"
         ];
@@ -218,29 +218,6 @@ rec {
         };
         resolvedDefaultFeatures = [ "clock" "default" "iana-time-zone" "js-sys" "oldtime" "std" "time" "wasm-bindgen" "wasmbind" "winapi" ];
       };
-      "codespan-reporting" = rec {
-        crateName = "codespan-reporting";
-        version = "0.11.1";
-        edition = "2018";
-        sha256 = "0vkfay0aqk73d33kh79k1kqxx06ka22894xhqi89crnc6c6jff1m";
-        authors = [
-          "Brendan Zabarauskas <bjzaba@yahoo.com.au>"
-        ];
-        dependencies = [
-          {
-            name = "termcolor";
-            packageId = "termcolor";
-          }
-          {
-            name = "unicode-width";
-            packageId = "unicode-width";
-          }
-        ];
-        features = {
-          "serde" = [ "dep:serde" ];
-          "serialization" = [ "serde" "serde/rc" ];
-        };
-      };
       "core-foundation-sys" = rec {
         crateName = "core-foundation-sys";
         version = "0.8.4";
@@ -250,136 +227,6 @@ rec {
           "The Servo Project Developers"
         ];
         features = {
-        };
-      };
-      "cxx" = rec {
-        crateName = "cxx";
-        version = "1.0.94";
-        edition = "2018";
-        sha256 = "14zbar3nqjppw6y2a29k9cshi0m3j36dr97qdcqirzn3i5iin7zn";
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-        dependencies = [
-          {
-            name = "cxxbridge-macro";
-            packageId = "cxxbridge-macro";
-          }
-          {
-            name = "link-cplusplus";
-            packageId = "link-cplusplus";
-          }
-        ];
-        buildDependencies = [
-          {
-            name = "cc";
-            packageId = "cc";
-          }
-          {
-            name = "cxxbridge-flags";
-            packageId = "cxxbridge-flags";
-            usesDefaultFeatures = false;
-          }
-        ];
-        features = {
-          "c++14" = [ "cxxbridge-flags/c++14" ];
-          "c++17" = [ "cxxbridge-flags/c++17" ];
-          "c++20" = [ "cxxbridge-flags/c++20" ];
-          "default" = [ "std" "cxxbridge-flags/default" ];
-          "std" = [ "alloc" ];
-        };
-        resolvedDefaultFeatures = [ "alloc" "default" "std" ];
-      };
-      "cxx-build" = rec {
-        crateName = "cxx-build";
-        version = "1.0.94";
-        edition = "2018";
-        sha256 = "0yx0wnmc5hz2lfkp3b30chmh4z42bnp4lncgnfpg4bcnx04fgkhj";
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-        dependencies = [
-          {
-            name = "cc";
-            packageId = "cc";
-          }
-          {
-            name = "codespan-reporting";
-            packageId = "codespan-reporting";
-          }
-          {
-            name = "once_cell";
-            packageId = "once_cell";
-          }
-          {
-            name = "proc-macro2";
-            packageId = "proc-macro2";
-            usesDefaultFeatures = false;
-            features = [ "span-locations" ];
-          }
-          {
-            name = "quote";
-            packageId = "quote";
-            usesDefaultFeatures = false;
-          }
-          {
-            name = "scratch";
-            packageId = "scratch";
-          }
-          {
-            name = "syn";
-            packageId = "syn 2.0.15";
-            usesDefaultFeatures = false;
-            features = [ "parsing" "printing" "clone-impls" "full" ];
-          }
-        ];
-        features = {
-          "parallel" = [ "cc/parallel" ];
-        };
-      };
-      "cxxbridge-flags" = rec {
-        crateName = "cxxbridge-flags";
-        version = "1.0.94";
-        edition = "2018";
-        sha256 = "1fzpqw12j8maki4m19fxrnf6xi2n988q9fgv799qq1p4wwm1fi3r";
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-        features = {
-        };
-        resolvedDefaultFeatures = [ "default" ];
-      };
-      "cxxbridge-macro" = rec {
-        crateName = "cxxbridge-macro";
-        version = "1.0.94";
-        edition = "2018";
-        sha256 = "1iavmbfq7c31jg20x62pk6n0ldpkd43xw99yi61gcsr2cj14hi93";
-        procMacro = true;
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-        dependencies = [
-          {
-            name = "proc-macro2";
-            packageId = "proc-macro2";
-          }
-          {
-            name = "quote";
-            packageId = "quote";
-          }
-          {
-            name = "syn";
-            packageId = "syn 2.0.15";
-            features = [ "full" ];
-          }
-        ];
-        features = {
-          "clang-ast" = [ "dep:clang-ast" ];
-          "experimental-enum-variants-from-header" = [ "clang-ast" "flate2" "memmap" "serde" "serde_json" ];
-          "flate2" = [ "dep:flate2" ];
-          "memmap" = [ "dep:memmap" ];
-          "serde" = [ "dep:serde" ];
-          "serde_json" = [ "dep:serde_json" ];
         };
       };
       "dbc-rust-modules" = rec {
@@ -549,22 +396,16 @@ rec {
       };
       "iana-time-zone-haiku" = rec {
         crateName = "iana-time-zone-haiku";
-        version = "0.1.1";
+        version = "0.1.2";
         edition = "2018";
-        sha256 = "1jix9qrqxclj9r4wkg7d3fr987d77vdg3qy2c5hl4ry19wlaw0q7";
+        sha256 = "17r6jmj31chn7xs9698r122mapq85mfnv98bb4pg6spm0si2f67k";
         authors = [
           "René Kijewski <crates.io@k6i.de>"
         ];
-        dependencies = [
-          {
-            name = "cxx";
-            packageId = "cxx";
-          }
-        ];
         buildDependencies = [
           {
-            name = "cxx-build";
-            packageId = "cxx-build";
+            name = "cc";
+            packageId = "cc";
           }
         ];
 
@@ -583,9 +424,9 @@ rec {
       };
       "js-sys" = rec {
         crateName = "js-sys";
-        version = "0.3.61";
+        version = "0.3.62";
         edition = "2018";
-        sha256 = "0c075apyc5fxp2sbgr87qcvq53pcjxmp05l47lzlhpn5a0hxwpa4";
+        sha256 = "1mdlp310f7jhc4g696wl8kiyvyc6df4v9n2z2nmph529zldnxhb8";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -599,9 +440,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.142";
+        version = "0.2.144";
         edition = "2015";
-        sha256 = "05skrzy55wl60n5y4syjkgql5g2626mf30hrsnkgyq2bypppp63a";
+        sha256 = "1qfzrwhncsradwvdzd8vsj4mc31fh0rb5rvny3884rwa48fcq01b";
         authors = [
           "The Rust Project Developers"
         ];
@@ -612,26 +453,6 @@ rec {
           "use_std" = [ "std" ];
         };
         resolvedDefaultFeatures = [ "default" "std" ];
-      };
-      "link-cplusplus" = rec {
-        crateName = "link-cplusplus";
-        version = "1.0.8";
-        edition = "2018";
-        sha256 = "1x84vvg7gn94x9zrvd67602h3ricmhlv19cpl2alzhqkqz4hglpc";
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-        buildDependencies = [
-          {
-            name = "cc";
-            packageId = "cc";
-          }
-        ];
-        features = {
-          "libcxx" = [ "libc++" ];
-          "libstdcxx" = [ "libstdc++" ];
-        };
-        resolvedDefaultFeatures = [ "default" ];
       };
       "log" = rec {
         crateName = "log";
@@ -742,13 +563,13 @@ rec {
         features = {
           "default" = [ "proc-macro" ];
         };
-        resolvedDefaultFeatures = [ "default" "proc-macro" "span-locations" ];
+        resolvedDefaultFeatures = [ "default" "proc-macro" ];
       };
       "quote" = rec {
         crateName = "quote";
-        version = "1.0.26";
+        version = "1.0.27";
         edition = "2018";
-        sha256 = "1z521piwggwzs0rj4wjx4ma6af1g6f1h5dkp382y5akqyx5sy924";
+        sha256 = "004mdlsn61k3f9lqv4yk8ghbzq6x1r2m9in7hg2c2pi68p8jjkwg";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -777,21 +598,11 @@ rec {
           "no-panic" = [ "dep:no-panic" ];
         };
       };
-      "scratch" = rec {
-        crateName = "scratch";
-        version = "1.0.5";
-        edition = "2015";
-        sha256 = "1hchqnh9ggsrisyaaasfqa0r484r75xh2lw87w6fcnz9bh1xp4hp";
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-
-      };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.160";
+        version = "1.0.163";
         edition = "2015";
-        sha256 = "0v11q6pjdjivw24cv98zv9dkdx50d6h9748lgvdbrqxwr1q3fbxv";
+        sha256 = "1hmyrqi2gszlngycz0rdznda7zr0q0nw1imm13h9llvsp18sn4r1";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -805,9 +616,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.160";
+        version = "1.0.163";
         edition = "2015";
-        sha256 = "1pvpiml328jhsz5h3pdc7x7wcyaagab6l5hb2q07wjfqcdy0j6i9";
+        sha256 = "0gm97qsj056dhzphafdn733vq922l8aj6q4w721qh34kwdvmg04c";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
@@ -824,7 +635,7 @@ rec {
           }
           {
             name = "syn";
-            packageId = "syn 2.0.15";
+            packageId = "syn";
           }
         ];
         features = {
@@ -871,41 +682,7 @@ rec {
         };
         resolvedDefaultFeatures = [ "default" "std" ];
       };
-      "syn 1.0.109" = rec {
-        crateName = "syn";
-        version = "1.0.109";
-        edition = "2018";
-        sha256 = "0ds2if4600bd59wsv7jjgfkayfzy3hnazs394kz6zdkmna8l3dkj";
-        authors = [
-          "David Tolnay <dtolnay@gmail.com>"
-        ];
-        dependencies = [
-          {
-            name = "proc-macro2";
-            packageId = "proc-macro2";
-            usesDefaultFeatures = false;
-          }
-          {
-            name = "quote";
-            packageId = "quote";
-            optional = true;
-            usesDefaultFeatures = false;
-          }
-          {
-            name = "unicode-ident";
-            packageId = "unicode-ident";
-          }
-        ];
-        features = {
-          "default" = [ "derive" "parsing" "printing" "clone-impls" "proc-macro" ];
-          "printing" = [ "quote" ];
-          "proc-macro" = [ "proc-macro2/proc-macro" "quote/proc-macro" ];
-          "quote" = [ "dep:quote" ];
-          "test" = [ "syn-test-suite/all-features" ];
-        };
-        resolvedDefaultFeatures = [ "clone-impls" "default" "derive" "full" "parsing" "printing" "proc-macro" "quote" "visit" ];
-      };
-      "syn 2.0.15" = rec {
+      "syn" = rec {
         crateName = "syn";
         version = "2.0.15";
         edition = "2021";
@@ -937,24 +714,7 @@ rec {
           "quote" = [ "dep:quote" ];
           "test" = [ "syn-test-suite/all-features" ];
         };
-        resolvedDefaultFeatures = [ "clone-impls" "default" "derive" "full" "parsing" "printing" "proc-macro" "quote" ];
-      };
-      "termcolor" = rec {
-        crateName = "termcolor";
-        version = "1.2.0";
-        edition = "2018";
-        sha256 = "1dmrbsljxpfng905qkaxljlwjhv8h0i3969cbiv5rb7y8a4wymdy";
-        authors = [
-          "Andrew Gallant <jamslam@gmail.com>"
-        ];
-        dependencies = [
-          {
-            name = "winapi-util";
-            packageId = "winapi-util";
-            target = { target, features }: (target."windows" or false);
-          }
-        ];
-
+        resolvedDefaultFeatures = [ "clone-impls" "default" "derive" "full" "parsing" "printing" "proc-macro" "quote" "visit" ];
       };
       "time" = rec {
         crateName = "time";
@@ -1001,23 +761,6 @@ rec {
           "David Tolnay <dtolnay@gmail.com>"
         ];
 
-      };
-      "unicode-width" = rec {
-        crateName = "unicode-width";
-        version = "0.1.10";
-        edition = "2015";
-        sha256 = "12vc3wv0qwg8rzcgb9bhaf5119dlmd6lmkhbfy1zfls6n7jx3vf0";
-        authors = [
-          "kwantam <kwantam@gmail.com>"
-          "Manish Goregaokar <manishsmail@gmail.com>"
-        ];
-        features = {
-          "compiler_builtins" = [ "dep:compiler_builtins" ];
-          "core" = [ "dep:core" ];
-          "rustc-dep-of-std" = [ "std" "core" "compiler_builtins" ];
-          "std" = [ "dep:std" ];
-        };
-        resolvedDefaultFeatures = [ "default" ];
       };
       "uuid" = rec {
         crateName = "uuid";
@@ -1089,9 +832,9 @@ rec {
       };
       "wasm-bindgen" = rec {
         crateName = "wasm-bindgen";
-        version = "0.2.84";
+        version = "0.2.85";
         edition = "2018";
-        sha256 = "0fx5gh0b4n6znfa3blz92wn1k4bbiysyq9m95s7rn3gk46ydry1i";
+        sha256 = "1d3lmkj9g58w9hy3vjwmdgc5ridkdzppf8l2w7xi54g3qj4bfv2v";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1108,6 +851,7 @@ rec {
         features = {
           "default" = [ "spans" "std" ];
           "enable-interning" = [ "std" ];
+          "gg-alloc" = [ "wasm-bindgen-test/gg-alloc" ];
           "serde" = [ "dep:serde" ];
           "serde-serialize" = [ "serde" "serde_json" "std" ];
           "serde_json" = [ "dep:serde_json" ];
@@ -1119,9 +863,9 @@ rec {
       };
       "wasm-bindgen-backend" = rec {
         crateName = "wasm-bindgen-backend";
-        version = "0.2.84";
+        version = "0.2.85";
         edition = "2018";
-        sha256 = "1ffc0wb293ha56i66f830x7f8aa2xql69a21lrasy1ncbgyr1klm";
+        sha256 = "08kqzvd8njn12azci9c3c9kdjc0va1i5vcw5v0kdda8587nj5r9m";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1148,7 +892,7 @@ rec {
           }
           {
             name = "syn";
-            packageId = "syn 1.0.109";
+            packageId = "syn";
             features = [ "full" ];
           }
           {
@@ -1163,9 +907,9 @@ rec {
       };
       "wasm-bindgen-macro" = rec {
         crateName = "wasm-bindgen-macro";
-        version = "0.2.84";
+        version = "0.2.85";
         edition = "2018";
-        sha256 = "1idlq28awqhq8rclb22rn5xix82w9a4rgy11vkapzhzd1dygf8ac";
+        sha256 = "0d5l0dlrb7hxk2kv2r86i7j16n9kj89vkgqc2aw1vll9rfh7k2im";
         procMacro = true;
         authors = [
           "The wasm-bindgen Developers"
@@ -1188,9 +932,9 @@ rec {
       };
       "wasm-bindgen-macro-support" = rec {
         crateName = "wasm-bindgen-macro-support";
-        version = "0.2.84";
+        version = "0.2.85";
         edition = "2018";
-        sha256 = "1xm56lpi0rihh8ny7x085dgs3jdm47spgqflb98wghyadwq83zra";
+        sha256 = "0sa8m5rwk26b6a6g5ip9g6wvf4m7sgg7laa19l9r77cvy0lwx0s7";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1205,7 +949,7 @@ rec {
           }
           {
             name = "syn";
-            packageId = "syn 1.0.109";
+            packageId = "syn";
             features = [ "visit" "full" ];
           }
           {
@@ -1225,9 +969,9 @@ rec {
       };
       "wasm-bindgen-shared" = rec {
         crateName = "wasm-bindgen-shared";
-        version = "0.2.84";
+        version = "0.2.85";
         edition = "2018";
-        sha256 = "0pcvk1c97r1pprzfaxxn359r0wqg5bm33ylbwgjh8f4cwbvzwih0";
+        sha256 = "1swi4sz4bd6jb00ddpy3345p1b3rz2pxykijph8xg97sra9da0d9";
         authors = [
           "The wasm-bindgen Developers"
         ];
@@ -1256,7 +1000,7 @@ rec {
         features = {
           "debug" = [ "impl-debug" ];
         };
-        resolvedDefaultFeatures = [ "consoleapi" "errhandlingapi" "fileapi" "minwinbase" "minwindef" "ntdef" "processenv" "profileapi" "std" "sysinfoapi" "timezoneapi" "winbase" "wincon" "winerror" "winnt" ];
+        resolvedDefaultFeatures = [ "minwinbase" "minwindef" "ntdef" "profileapi" "std" "sysinfoapi" "timezoneapi" ];
       };
       "winapi-i686-pc-windows-gnu" = rec {
         crateName = "winapi-i686-pc-windows-gnu";
@@ -1265,24 +1009,6 @@ rec {
         sha256 = "1dmpa6mvcvzz16zg6d5vrfy4bxgg541wxrcip7cnshi06v38ffxc";
         authors = [
           "Peter Atashian <retep998@gmail.com>"
-        ];
-
-      };
-      "winapi-util" = rec {
-        crateName = "winapi-util";
-        version = "0.1.5";
-        edition = "2018";
-        sha256 = "0y71bp7f6d536czj40dhqk0d55wfbbwqfp2ymqf1an5ibgl6rv3h";
-        authors = [
-          "Andrew Gallant <jamslam@gmail.com>"
-        ];
-        dependencies = [
-          {
-            name = "winapi";
-            packageId = "winapi";
-            target = { target, features }: (target."windows" or false);
-            features = [ "std" "consoleapi" "errhandlingapi" "fileapi" "minwindef" "processenv" "winbase" "wincon" "winerror" "winnt" ];
-          }
         ];
 
       };
