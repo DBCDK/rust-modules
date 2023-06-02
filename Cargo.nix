@@ -83,6 +83,16 @@ rec {
     #   inject test dependencies into the build
 
     crates = {
+      "android-tzdata" = rec {
+        crateName = "android-tzdata";
+        version = "0.1.1";
+        edition = "2018";
+        sha256 = "1w7ynjxrfs97xg3qlcdns4kgfpwcdv824g611fq32cag4cdr96g9";
+        authors = [
+          "RumovZ"
+        ];
+
+      };
       "android_system_properties" = rec {
         crateName = "android_system_properties";
         version = "0.1.5";
@@ -152,10 +162,15 @@ rec {
       };
       "chrono" = rec {
         crateName = "chrono";
-        version = "0.4.24";
-        edition = "2018";
-        sha256 = "0fv7idr8c7vdb0xi32w45a7pafnyzk7m0bknfggj5pva0qcmjg2f";
+        version = "0.4.26";
+        edition = "2021";
+        sha256 = "1icvzp2v88a5cwsygcnl1cf0jqzkncvrnmmxdmazca2v6mqpm0zc";
         dependencies = [
+          {
+            name = "android-tzdata";
+            packageId = "android-tzdata";
+            target = { target, features }: ("android" == target."os");
+          }
           {
             name = "iana-time-zone";
             packageId = "iana-time-zone";
@@ -168,11 +183,6 @@ rec {
             packageId = "js-sys";
             optional = true;
             target = { target, features }: (("wasm32" == target."arch") && (!(("emscripten" == target."os") || ("wasi" == target."os"))));
-          }
-          {
-            name = "num-integer";
-            packageId = "num-integer";
-            usesDefaultFeatures = false;
           }
           {
             name = "num-traits";
@@ -195,7 +205,7 @@ rec {
             packageId = "winapi";
             optional = true;
             target = { target, features }: (target."windows" or false);
-            features = [ "std" "minwinbase" "minwindef" "timezoneapi" ];
+            features = [ "std" "minwinbase" "minwindef" "timezoneapi" "sysinfoapi" ];
           }
         ];
         features = {
@@ -457,53 +467,21 @@ rec {
       };
       "log" = rec {
         crateName = "log";
-        version = "0.4.17";
+        version = "0.4.18";
         edition = "2015";
-        sha256 = "0biqlaaw1lsr8bpnmbcc0fvgjj34yy79ghqzyi0ali7vgil2xcdb";
+        sha256 = "1pni3kp7hxqa45890sf5kc1qbzgyv0b4r122n4b5jdl75xpzg3ji";
         authors = [
           "The Rust Project Developers"
-        ];
-        dependencies = [
-          {
-            name = "cfg-if";
-            packageId = "cfg-if";
-          }
         ];
         features = {
           "kv_unstable" = [ "value-bag" ];
           "kv_unstable_serde" = [ "kv_unstable_std" "value-bag/serde" "serde" ];
           "kv_unstable_std" = [ "std" "kv_unstable" "value-bag/error" ];
-          "kv_unstable_sval" = [ "kv_unstable" "value-bag/sval" "sval" ];
+          "kv_unstable_sval" = [ "kv_unstable" "value-bag/sval" "sval" "sval_ref" ];
           "serde" = [ "dep:serde" ];
           "sval" = [ "dep:sval" ];
+          "sval_ref" = [ "dep:sval_ref" ];
           "value-bag" = [ "dep:value-bag" ];
-        };
-      };
-      "num-integer" = rec {
-        crateName = "num-integer";
-        version = "0.1.45";
-        edition = "2015";
-        sha256 = "1ncwavvwdmsqzxnn65phv6c6nn72pnv9xhpmjd6a429mzf4k6p92";
-        authors = [
-          "The Rust Project Developers"
-        ];
-        dependencies = [
-          {
-            name = "num-traits";
-            packageId = "num-traits";
-            usesDefaultFeatures = false;
-          }
-        ];
-        buildDependencies = [
-          {
-            name = "autocfg";
-            packageId = "autocfg";
-          }
-        ];
-        features = {
-          "default" = [ "std" ];
-          "i128" = [ "num-traits/i128" ];
-          "std" = [ "num-traits/std" ];
         };
       };
       "num-traits" = rec {
@@ -527,9 +505,9 @@ rec {
       };
       "once_cell" = rec {
         crateName = "once_cell";
-        version = "1.17.1";
+        version = "1.17.2";
         edition = "2021";
-        sha256 = "1lrsy9c5ikf2iwxr4iwgd3rlq9mg8alh0np1g8abnvp1k4151rdp";
+        sha256 = "0ys8s3l00k18796n0vmsj2ryny48a2mnws1yiy8017kpjizs0w4n";
         authors = [
           "Aleksey Kladov <aleksey.kladov@gmail.com>"
         ];
@@ -685,9 +663,9 @@ rec {
       };
       "syn" = rec {
         crateName = "syn";
-        version = "2.0.17";
+        version = "2.0.18";
         edition = "2021";
-        sha256 = "123kas0craj9d9q18wdpsjx3zpz7pjhc9hxfhb0nkff56sxxvdj5";
+        sha256 = "0gpa0391m1z2ca3gjsq6s72k8hdhil6hpiz7a86c495ypividm1j";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
