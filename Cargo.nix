@@ -325,9 +325,9 @@ rec {
       };
       "getrandom" = rec {
         crateName = "getrandom";
-        version = "0.2.9";
+        version = "0.2.10";
         edition = "2018";
-        sha256 = "1r6p47dd9f9cgiwlxmksammbfwnhsv5hjkhd0kjsgnzanad1spn8";
+        sha256 = "09zlimhhskzf7cmgcszix05wyz2i6fcpvh711cv1klsxl6r3chdy";
         authors = [
           "The Rand Project Developers"
         ];
@@ -360,9 +360,9 @@ rec {
       };
       "iana-time-zone" = rec {
         crateName = "iana-time-zone";
-        version = "0.1.56";
+        version = "0.1.57";
         edition = "2018";
-        sha256 = "0z7ky37i5f5djwv7mlkgnjny885v1dm4b9bydqqh9pmp2iqws8h7";
+        sha256 = "04yn5npa008fqd2y6qd3y3bmyqjpd4fyiwq6sa5v7lj2b215pb9g";
         authors = [
           "Andrew Straw <strawman@astraw.com>"
           "René Kijewski <rene.kijewski@fu-berlin.de>"
@@ -451,9 +451,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.144";
+        version = "0.2.146";
         edition = "2015";
-        sha256 = "1qfzrwhncsradwvdzd8vsj4mc31fh0rb5rvny3884rwa48fcq01b";
+        sha256 = "16zjlz5admbg62bxncyf770dka7qalq2mq59ca44kz8k7j9y8azr";
         authors = [
           "The Rust Project Developers"
         ];
@@ -505,30 +505,27 @@ rec {
       };
       "once_cell" = rec {
         crateName = "once_cell";
-        version = "1.17.2";
+        version = "1.18.0";
         edition = "2021";
-        sha256 = "0ys8s3l00k18796n0vmsj2ryny48a2mnws1yiy8017kpjizs0w4n";
+        sha256 = "0vapcd5ambwck95wyz3ymlim35jirgnqn9a0qmi19msymv95v2yx";
         authors = [
           "Aleksey Kladov <aleksey.kladov@gmail.com>"
         ];
         features = {
           "alloc" = [ "race" ];
           "atomic-polyfill" = [ "critical-section" ];
-          "atomic_polyfill" = [ "dep:atomic_polyfill" ];
-          "critical-section" = [ "critical_section" "atomic_polyfill" ];
-          "critical_section" = [ "dep:critical_section" ];
+          "critical-section" = [ "dep:critical-section" "dep:atomic-polyfill" ];
           "default" = [ "std" ];
-          "parking_lot" = [ "parking_lot_core" ];
-          "parking_lot_core" = [ "dep:parking_lot_core" ];
+          "parking_lot" = [ "dep:parking_lot_core" ];
           "std" = [ "alloc" ];
         };
         resolvedDefaultFeatures = [ "alloc" "default" "race" "std" ];
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.59";
+        version = "1.0.60";
         edition = "2018";
-        sha256 = "06s5yglnz3h3x53rpp7az7ka6j169sg33al1nxhcc4xlhs5s3v3a";
+        sha256 = "01jl37rkmnxscz0k0arbjb7l80w7z8a64281w96wyqm8ny3b1hny";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
           "Alex Crichton <alex@alexcrichton.com>"
@@ -579,9 +576,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.163";
+        version = "1.0.164";
         edition = "2015";
-        sha256 = "1hmyrqi2gszlngycz0rdznda7zr0q0nw1imm13h9llvsp18sn4r1";
+        sha256 = "0z82r42ayqb48vw4cbsja4byl779vh33p4k4q6dpd3z973wqr34y";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -595,9 +592,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.163";
+        version = "1.0.164";
         edition = "2015";
-        sha256 = "0gm97qsj056dhzphafdn733vq922l8aj6q4w721qh34kwdvmg04c";
+        sha256 = "0s0xccdxvz8ilr4jqqgw8iqkfnvjx6i90kciys5w4lfciiimnwyr";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
