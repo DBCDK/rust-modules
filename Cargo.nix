@@ -451,9 +451,9 @@ rec {
       };
       "libc" = rec {
         crateName = "libc";
-        version = "0.2.146";
+        version = "0.2.147";
         edition = "2015";
-        sha256 = "16zjlz5admbg62bxncyf770dka7qalq2mq59ca44kz8k7j9y8azr";
+        sha256 = "1cwv2lkzk3p5lby79fm42qhsh29lvbqwayhjjkq1s746xaq8yrml";
         authors = [
           "The Rust Project Developers"
         ];
@@ -523,9 +523,9 @@ rec {
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.60";
+        version = "1.0.63";
         edition = "2018";
-        sha256 = "01jl37rkmnxscz0k0arbjb7l80w7z8a64281w96wyqm8ny3b1hny";
+        sha256 = "1ssr3643nwfhw7yvqhibjw1k6nsnbv0lxq7mc1zcw38vjax8ydkv";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
           "Alex Crichton <alex@alexcrichton.com>"
@@ -543,9 +543,9 @@ rec {
       };
       "quote" = rec {
         crateName = "quote";
-        version = "1.0.28";
+        version = "1.0.29";
         edition = "2018";
-        sha256 = "122lh886x0p5xh87015wbknl0dfimsjg273g00cxzn6zxb3vk6hv";
+        sha256 = "019ij5fwp56ydww6zr46dhmzsf078qkdq9vz6mw1cri7mgl1ac2p";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -620,9 +620,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.97";
+        version = "1.0.99";
         edition = "2018";
-        sha256 = "0al48338iijhhywq4163q7djr13hw4i706cr3j1dbjia2j9vzwxx";
+        sha256 = "1qzal5a1wlfw587xqfwngly0nhrkzqi7d1rva27hp820q9qnh9j6";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -660,9 +660,9 @@ rec {
       };
       "syn" = rec {
         crateName = "syn";
-        version = "2.0.18";
+        version = "2.0.22";
         edition = "2021";
-        sha256 = "0gpa0391m1z2ca3gjsq6s72k8hdhil6hpiz7a86c495ypividm1j";
+        sha256 = "05j6n81lm86idf0cgv9rfpddscajyj91rlfbrmmvvsplmkkymyrf";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
@@ -1663,9 +1663,9 @@ rec {
       };
       "windows-targets" = rec {
         crateName = "windows-targets";
-        version = "0.48.0";
+        version = "0.48.1";
         edition = "2018";
-        sha256 = "1mfzg94w0c8h4ya9sva7rra77f3iy1712af9b6bwg03wrpqbc7kv";
+        sha256 = "0pz9ad4mpp06h80hkmzlib78b5r9db7isycy1gr9j17pj1sb3m05";
         authors = [
           "Microsoft"
         ];
@@ -1673,7 +1673,7 @@ rec {
           {
             name = "windows_aarch64_gnullvm";
             packageId = "windows_aarch64_gnullvm";
-            target = { target, features }: (("aarch64" == target."arch") && ("gnu" == target."env") && ("llvm" == target."abi") && (!(target."windows_raw_dylib" or false)));
+            target = { target, features }: (pkgs.rust.lib.toRustTarget stdenv.hostPlatform == "aarch64-pc-windows-gnullvm");
           }
           {
             name = "windows_aarch64_msvc";
@@ -1698,7 +1698,7 @@ rec {
           {
             name = "windows_x86_64_gnullvm";
             packageId = "windows_x86_64_gnullvm";
-            target = { target, features }: (("x86_64" == target."arch") && ("gnu" == target."env") && ("llvm" == target."abi") && (!(target."windows_raw_dylib" or false)));
+            target = { target, features }: (pkgs.rust.lib.toRustTarget stdenv.hostPlatform == "x86_64-pc-windows-gnullvm");
           }
           {
             name = "windows_x86_64_msvc";
