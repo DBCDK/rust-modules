@@ -523,9 +523,9 @@ rec {
       };
       "proc-macro2" = rec {
         crateName = "proc-macro2";
-        version = "1.0.63";
+        version = "1.0.64";
         edition = "2018";
-        sha256 = "1ssr3643nwfhw7yvqhibjw1k6nsnbv0lxq7mc1zcw38vjax8ydkv";
+        sha256 = "1nm7qw54jn9n0g1ygkw4f63vj90m241yih6ph3g6zx7irdi3p03q";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
           "Alex Crichton <alex@alexcrichton.com>"
@@ -576,9 +576,9 @@ rec {
       };
       "serde" = rec {
         crateName = "serde";
-        version = "1.0.167";
+        version = "1.0.171";
         edition = "2015";
-        sha256 = "0dxj485c99av9zx9l2q2kx12ns2dqbhggkwl3nm44fs6aqs53bvx";
+        sha256 = "1a9lvibgi42mhmgafp747mvshsq6ybx6rzcjqh398rfp9wg7vqih";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -592,9 +592,9 @@ rec {
       };
       "serde_derive" = rec {
         crateName = "serde_derive";
-        version = "1.0.167";
+        version = "1.0.171";
         edition = "2015";
-        sha256 = "1ff4h8zqb93fca1cl5cjryjzhh20k0chvrvlx7q5905wd1mi16xn";
+        sha256 = "10j6s97fk7fgjiqhhrx6a44rqxr7v3w985i3avx4d36i7dh9961q";
         procMacro = true;
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
@@ -620,9 +620,9 @@ rec {
       };
       "serde_json" = rec {
         crateName = "serde_json";
-        version = "1.0.100";
-        edition = "2018";
-        sha256 = "0p0qnmhdkqd676m8xbh0lqlphlgqbgmwkgdxg15lrap7kgl187hg";
+        version = "1.0.102";
+        edition = "2021";
+        sha256 = "1vfzj76zdn8yh5l08yzr6lf95whic3vrlkh6nq4266s8bncjl1mm";
         authors = [
           "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
           "David Tolnay <dtolnay@gmail.com>"
@@ -660,9 +660,9 @@ rec {
       };
       "syn" = rec {
         crateName = "syn";
-        version = "2.0.23";
+        version = "2.0.25";
         edition = "2021";
-        sha256 = "0dqpgk43kby07p6m1bqjydv7nd6fs6kv73ibsr2i19c1h9npvysr";
+        sha256 = "1qjswb3cifay6x9l0qjpm9c42ikacpxybr9ny4npw9kl1j6grqqm";
         authors = [
           "David Tolnay <dtolnay@gmail.com>"
         ];
